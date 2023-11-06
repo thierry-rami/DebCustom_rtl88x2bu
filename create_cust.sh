@@ -29,3 +29,19 @@ dpkg-deb --build  ~/$diriso/debrtl/rtl88x2bu
 # on copie le deb dans l'arboresence du DVD
 mkdir ~/$diriso/Iso/pool/main/r/rtl88x2bu
 cp ~/$diriso/debrtl/*.deb ~/$diriso/Iso/pool/main/r/rtl88x2bu
+
+# on crée et on applique le "config-deb"
+cp ~/DebCustom_rtl88x2bu/config-deb ~/$diriso
+cd ~/$diriso
+apt-ftparchive generate config-deb
+# on efface les MD5
+sed -i '/MD5Sum:/,$d' Iso/dists/bookworm/Release
+apt-ftparchive release Iso/dists/bookworm >> Iso/dists/bookworm/Release
+
+# on genere les MD5
+cd Iso; md5sum `find ! -name "md5sum.txt" ! -path "./isolinux/*" -follow -type f` > md5sum.txt; cd ..
+# on rend le dossier en lecture
+chmod -R -w Iso
+# on genere le DVD
+xorriso -as mkisofs -o Debian-12-Custom.iso -isohybrid-mbr isohdpfx.bin \
+-c isolinux/boot.cat -b isolinux/isolinux.bin -no-emul-boot -boot-load-size 4 -boot-info-table ./Iso
