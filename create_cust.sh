@@ -1,7 +1,7 @@
 #!/bin/bash
 # version debian courante
 debver="12.2.0"
-diriso="~/DevIso
+diriso="~/DevIso"
 # tous est dans ~DevIso , creation des Dossiers
 mkdir $diriso
 cd $diriso
