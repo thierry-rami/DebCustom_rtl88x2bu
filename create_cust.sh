@@ -50,5 +50,6 @@ cd Iso; md5sum `find ! -name "md5sum.txt" ! -path "./isolinux/*" -follow -type f
 # on rend le dossier en lecture
 chmod -R -w Iso
 # on genere le DVD
-xorriso -as mkisofs -o Debian-12-Custom.iso -isohybrid-mbr isohdpfx.bin \
+date=$(date '+%Y%m%d')
+xorriso -as mkisofs -o Debian12-$date-rtl88x2bu.iso -isohybrid-mbr isohdpfx.bin \
 -c isolinux/boot.cat -b isolinux/isolinux.bin -no-emul-boot -boot-load-size 4 -boot-info-table ./Iso
