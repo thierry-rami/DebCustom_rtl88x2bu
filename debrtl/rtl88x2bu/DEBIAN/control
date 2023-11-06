@@ -1,0 +1,8 @@
+Package: rtl88x2bu
+Version: 1.0.1
+Maintainer: Thierry Rami
+Architecture: all
+Description: Driver wifi rtl88x2bu
+Depends: dkms (>= 3.0.0.0) , linux-headers-amd64 , build-essential , dialog
+Section: net
+Priority: required
