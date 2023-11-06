@@ -2,7 +2,8 @@
 # version debian courante
 debver="12.2.0"
 diriso="DevIso"
-# tous est dans ~DevIso , creation des Dossiers
+# tous est dans ~DevIso 
+# creation des Dossiers
 mkdir ~/$diriso
 cd ~/$diriso
 mkdir Iso tmp
@@ -11,11 +12,17 @@ mkdir    debrtl/rtl88x2bu/DEBIAN
 
 # tous va etre téléchargé dans tmp
 cd tmp
+
 # on recupere l'iso DVD install Debian
 wget https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/debian-$debver-amd64-DVD-1.iso
+
 # extraction du DVD dans Iso/
 bsdtar -C ~/$diriso/Iso/ -xf debian-$debver-amd64-DVD-1.iso
 chmod -R +w ~/$diriso/Iso
+
+# on change le splashscreen
+cp  ~/DebCustom_rtl88x2bu/splash.png ~/$diriso/Iso/isolinux/splash.png
+
 # on recupere le boot du DVD
 dd if=debian-$debver-amd64-DVD-1.iso bs=1 count=432 of=~/$diriso/isohdpfx.bin
 rm debian-$debver-amd64-DVD-1.iso
