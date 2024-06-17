@@ -1,6 +1,6 @@
 #!/bin/bash
 # version debian courante
-debver="12.2.0"
+debver="12.5.0"
 diriso="DevIso"
 # tous est dans ~DevIso 
 # creation des Dossiers

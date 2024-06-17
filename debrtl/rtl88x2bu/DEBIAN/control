@@ -1,5 +1,5 @@
 Package: rtl88x2bu
-Version: 1.0.1
+Version: 1.0.2
 Maintainer: Thierry Rami
 Architecture: all
 Description: Driver wifi rtl88x2bu
